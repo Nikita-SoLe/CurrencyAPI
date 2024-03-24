@@ -1,7 +1,11 @@
 package com.pantyukhinn.currencyapi.repository.parse;
 
 import com.pantyukhinn.currencyapi.model.Currency;
+import com.pantyukhinn.currencyapi.repository.ParserCurrencyDAO;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
@@ -11,6 +15,7 @@ import java.util.stream.Collectors;
 
 
 @Repository
+@Slf4j
 public class ParserCurrencyImpl implements ParserCurrencyDAO {
     private Long time;
     private Map<String, Currency> map;
@@ -18,9 +23,9 @@ public class ParserCurrencyImpl implements ParserCurrencyDAO {
     @PostConstruct
     private void init() {
         this.time = System.currentTimeMillis();
-        System.out.println("Время установлено на " + time);
+        log.info("Время установлено на " + time);
         this.map = Parse.parse().stream().collect(Collectors.toMap(Currency::getName, obj -> obj));
-        System.out.println("Мапа обновлена");
+        log.info("Мапа обновлена");
     }
 
     @Override
@@ -64,8 +69,9 @@ public class ParserCurrencyImpl implements ParserCurrencyDAO {
     }
 
     @Override
-    public void update() {
+    public Boolean update() {
         init();
+        return true;
     }
 
     private void checkTime() {

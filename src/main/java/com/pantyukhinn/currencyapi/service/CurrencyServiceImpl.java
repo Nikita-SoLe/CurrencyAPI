@@ -1,7 +1,7 @@
 package com.pantyukhinn.currencyapi.service;
 
 import com.pantyukhinn.currencyapi.model.Currency;
-import com.pantyukhinn.currencyapi.repository.parse.ParserCurrencyDAO;
+import com.pantyukhinn.currencyapi.repository.ParserCurrencyDAO;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -46,7 +46,7 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public void update() {
-        dao.update();
+    public Boolean update() {
+        return dao.update();
     }
 }

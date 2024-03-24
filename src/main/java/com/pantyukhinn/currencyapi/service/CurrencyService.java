@@ -17,5 +17,5 @@ public interface CurrencyService {
 
     Double convert(Integer id, Long value);
 
-    void update();
+    Boolean update();
 }

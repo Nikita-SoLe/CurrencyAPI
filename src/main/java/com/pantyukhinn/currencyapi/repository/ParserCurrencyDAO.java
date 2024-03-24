@@ -1,4 +1,4 @@
-package com.pantyukhinn.currencyapi.repository.parse;
+package com.pantyukhinn.currencyapi.repository;
 
 import java.util.Map;
 import com.pantyukhinn.currencyapi.model.Currency;
@@ -16,5 +16,5 @@ public interface ParserCurrencyDAO {
 
     Double convert(Integer id, Long value);
 
-    void update();
+    Boolean update();
 }

@@ -3,15 +3,20 @@ package com.pantyukhinn.currencyapi.controller;
 import com.pantyukhinn.currencyapi.model.Currency;
 import com.pantyukhinn.currencyapi.service.CurrencyService;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/currency")
+@Slf4j
 public class ControllerCurrencyAPI {
     private final CurrencyService service;
 
@@ -49,8 +54,11 @@ public class ControllerCurrencyAPI {
     }
 
     @GetMapping("/update")
-    public String update() {
-        service.update();
-        return "Updated";
+    public ResponseEntity<?> update() {
+        Map<String, String> map = new HashMap<>();
+        map.put("updated", service.update().toString());
+        log.info(map.toString());
+        return ResponseEntity.status(HttpStatus.OK)
+                             .body(map);
     }
 }
