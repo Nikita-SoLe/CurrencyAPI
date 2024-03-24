@@ -16,7 +16,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/currency")
-@Slf4j
 public class ControllerCurrencyAPI {
     private final CurrencyService service;
 
@@ -57,7 +56,6 @@ public class ControllerCurrencyAPI {
     public ResponseEntity<?> update() {
         Map<String, String> map = new HashMap<>();
         map.put("updated", service.update().toString());
-        log.info(map.toString());
         return ResponseEntity.status(HttpStatus.OK)
                              .body(map);
     }
