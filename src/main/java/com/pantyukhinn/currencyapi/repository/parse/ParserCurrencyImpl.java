@@ -60,7 +60,7 @@ public class ParserCurrencyImpl implements ParserCurrencyDAO {
     public Double convert(Integer id, Long value) {
         checkTime();
         Currency currency = getCurrencyById(id);
-        return (currency.getCurrency() * value) * currency.getQuantity();
+        return (currency.getCurrency() * value) / currency.getQuantity();
     }
 
     @Override
