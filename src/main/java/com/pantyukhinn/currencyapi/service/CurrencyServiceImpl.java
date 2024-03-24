@@ -1,9 +1,7 @@
 package com.pantyukhinn.currencyapi.service;
 
 import com.pantyukhinn.currencyapi.model.Currency;
-import com.pantyukhinn.currencyapi.repository.parse.Parse;
 import com.pantyukhinn.currencyapi.repository.parse.ParserCurrencyDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -23,12 +21,32 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public Currency getCurrencyName(String currency) {
-        return null;
+    public Currency getCurrencyByName(String currency) {
+        return dao.getCurrencyByName(currency);
+    }
+
+    @Override
+    public Currency getCurrencyById(Integer id) {
+        return dao.getCurrencyById(id);
     }
 
     @Override
     public Map<String, Currency> getSortedCurrencyNatural() {
-        return null;
+        return dao.getSortedCurrencyNatural();
+    }
+
+    @Override
+    public Map<String, Currency> getSortedCurrencyReverse() {
+        return dao.getSortedCurrencyReverse();
+    }
+
+    @Override
+    public Double convert(Integer id, Long value) {
+        return dao.convert(id, value);
+    }
+
+    @Override
+    public void update() {
+        dao.update();
     }
 }

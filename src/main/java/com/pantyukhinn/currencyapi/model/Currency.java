@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.Getter;
 
 @Data
-@Getter
 @AllArgsConstructor
 public class Currency {
+    private Integer id;
     private String name;
     private Integer  quantity;
     private Double currency;

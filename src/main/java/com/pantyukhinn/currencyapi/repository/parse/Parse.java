@@ -27,6 +27,7 @@ public class Parse {
 
             Elements tr = doc.getElementsByTag("tr");
 
+            Integer id = 0;
             for (Element element : tr) {
                 String valut = null, count = null, course = null, ost = null;
                 Elements td = element.getElementsByTag("td");
@@ -47,8 +48,9 @@ public class Parse {
                         ost = element1.text();
                     }
                 }
-                if (valut != null && count != null && course != null && ost != null)
-                    list.add(new Currency(valut, Integer.parseInt(count), Double.parseDouble(course), ost));
+                if (valut != null && count != null && course != null && ost != null) {
+                    list.add(new Currency(id++, valut, Integer.parseInt(count), Double.parseDouble(course), ost));
+                }
             }
         } catch (IOException e) {
             System.out.println("Произошла ошибка получения валют из сети.");
