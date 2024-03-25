@@ -18,7 +18,6 @@ import java.util.Map;
 @RequestMapping("/currency")
 public class ControllerCurrencyAPI {
     private final CurrencyService service;
-
     public ControllerCurrencyAPI(CurrencyService service) {
         this.service = service;
     }

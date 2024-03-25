@@ -8,9 +8,7 @@ import java.util.Map;
 
 @Service
 public class CurrencyServiceImpl implements CurrencyService {
-
     private final ParserCurrencyDAO dao;
-
     public CurrencyServiceImpl(ParserCurrencyDAO dao) {
         this.dao = dao;
     }

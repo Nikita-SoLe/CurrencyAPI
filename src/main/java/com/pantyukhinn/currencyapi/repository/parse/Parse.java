@@ -13,20 +13,14 @@ import java.util.List;
 
 @Component
 public class Parse {
-
     private static Document doc;
-
     public Parse() {
     }
-
     public static List<Currency> parse() {
         List<Currency> list = new ArrayList<>();
-
         try {
             doc = Jsoup.connect("https://www.finmarket.ru/currency/rates/").get();
-
             Elements tr = doc.getElementsByTag("tr");
-
             Integer id = 0;
             for (Element element : tr) {
                 String valut = null, count = null, course = null, ost = null;
@@ -34,7 +28,6 @@ public class Parse {
 
                 for (Element element1 : td) {
                     Elements names = element1.getElementsByTag("a");
-
                     for (Element name : names) {
                         valut = name.text();
                     }
